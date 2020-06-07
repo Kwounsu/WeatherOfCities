@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="longitude">Longitude</string>
+    <string name="search">Search</string>
+    <string name="latitude">Latitude</string>
+    <string name="london">London</string>
+    <string name="la">LA</string>
+    <string name="newyork">NewYork</string>
+    <string name="seoul">Seoul</string>
+</resources>

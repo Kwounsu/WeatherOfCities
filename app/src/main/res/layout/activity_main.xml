@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@drawable/android_weather_image"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button_seoul"
+        android:text="@string/seoul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/button_newYork"
+        android:text="@string/newyork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/button_la"
+        android:text="@string/la"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/button_london"
+        android:text="@string/london"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/editText_latitude"
+        android:layout_marginTop="180dp"
+        android:hint="@string/latitude"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/editText_longitude"
+        android:hint="@string/longitude"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/button_search"
+        android:text="@string/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
