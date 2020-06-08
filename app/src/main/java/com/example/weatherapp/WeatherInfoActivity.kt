@@ -33,7 +33,6 @@ class WeatherInfoActivity : AppCompatActivity() {
         val service = retrofit.create(WeatherService::class.java)
 
         service.getWeatherData(lat.toString(),lon.toString(),appid).enqueue(object : Callback<Data>{
-//        service.getWeatherData(lat, lon).enqueue(object : Callback<Data>{
             override fun onFailure(call: Call<Data>, t: Throwable) {
                 Log.d("Retrofit", "result :" + t.message)
             }
