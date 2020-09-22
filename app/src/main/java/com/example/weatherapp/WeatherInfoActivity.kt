@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.activity_weather_info.*
 import kotlin.math.roundToLong
 
 class WeatherInfoActivity : AppCompatActivity() {
-    val appid = "5d52492a88825d90aed4b60c70118855"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,12 +20,16 @@ class WeatherInfoActivity : AppCompatActivity() {
         val lat = bundle?.get("lat") as Double
         val lon = bundle?.get("lon") as Double
 
+        // Disposable: tracks the fetching activity. should fetching result return -> activity destroy
+        // CompositeDisposable: class to keep all disposables in the same place to dispose all of then at once
         val compositeDisposable = CompositeDisposable()
         compositeDisposable.add(
-            WeatherService.buildService().getWeatherData(lat.toString(), lon.toString(), appid)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(this::handleResponse, this::handleError)
+            WeatherService.buildService().getWeatherData(lat.toString(), lon.toString())
+                // subscribeOn: Observable
+                .subscribeOn(Schedulers.io()) // creates a Scheduler thread over which we do the network call. IO-bound work.
+                // observeOn: Observer
+                .observeOn(AndroidSchedulers.mainThread()) // fetched data to be displayed on the MainTread (UI)
+                .subscribe(this::handleResponse, this::handleError) // execute api call
         )
     }
 
@@ -35,7 +38,7 @@ class WeatherInfoActivity : AppCompatActivity() {
     }
 
     private fun handleResponse(response: Data) {
-        Log.d("Retrofit", "result: " + response.toString())
+        Log.d("Retrofit", "result: $response")
         val Temp =  ((response.current.temp - 273.15) * 9 / 5 + 32).roundToLong()  // Kelvin to Fahrenheit
         textView_temp.text = Temp.toString()
         textView_timezone.text = response.timezone

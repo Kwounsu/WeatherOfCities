@@ -18,40 +18,32 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button_seoul.setOnClickListener {
-            val intent = Intent(this, WeatherInfoActivity::class.java)
-            intent.putExtra("lat",37.5665) // North
-            intent.putExtra("lon",126.9780) // East
-            startActivity(intent)
+            startWeatherInfoActivityWIthLatAndLon(37.5665,126.9780)
         }
 
         button_newYork.setOnClickListener {
-            val intent = Intent(this, WeatherInfoActivity::class.java)
-            intent.putExtra("lat",40.7128)
-            intent.putExtra("lon",-74.0060)
-            startActivity(intent)
+            startWeatherInfoActivityWIthLatAndLon(40.7128,-74.0060)
         }
 
         button_la.setOnClickListener {
-            val intent = Intent(this, WeatherInfoActivity::class.java)
-            intent.putExtra("lat",34.0522)
-            intent.putExtra("lon",-118.2437)
-            startActivity(intent)
+            startWeatherInfoActivityWIthLatAndLon(34.0522,-118.2437)
         }
 
         button_london.setOnClickListener {
-            val intent = Intent(this, WeatherInfoActivity::class.java)
-            intent.putExtra("lat",51.5074)
-            intent.putExtra("lon",-0.1278)
-            startActivity(intent)
+            startWeatherInfoActivityWIthLatAndLon(51.5074,-0.1278)
         }
 
         button_search.setOnClickListener {
-            val intent = Intent(this, WeatherInfoActivity::class.java)
             val lat: Double = editText_latitude.text.toString().toDouble()
             val lon: Double = editText_longitude.text.toString().toDouble()
-            intent.putExtra("lat", lat)
-            intent.putExtra("lon", lon)
-            startActivity(intent)
+            startWeatherInfoActivityWIthLatAndLon(lat,lon)
         }
+    }
+
+    private fun startWeatherInfoActivityWIthLatAndLon (lat: Double, lon: Double) {
+        val intent = Intent(this, WeatherInfoActivity::class.java)
+        intent.putExtra("lat",lat)
+        intent.putExtra("lon",lon)
+        startActivity(intent)
     }
 }
